@@ -4,7 +4,7 @@
 
 Name:           wxPython
 Version:        2.4.2.4
-Release:        1
+Release:        2
 Summary:        wxPython is a GUI toolkit for the Python programming language.
 
 Group:          Development/Languages
@@ -32,6 +32,8 @@ platform GUI library, which is written in C++.
 # just build the wxPython part, not all of wxWindows which we already have
 # in fedora...
 cd wxPython
+# included disutils is not multilib aware; use normal
+rm -rf distutils
 python setup.py %{buildflags} build
 
 # this doesn't get built automatically, resulting in bogus libwx_gtk2-2.3.so.0
@@ -56,6 +58,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/python%{pyver}/site-packages/wx
 
 %changelog
+* Tue Feb 08 2005 Thorsten Leemhuis <fedora at leemhuis dot info> 2.4.2.4-2
+- remove included disutils - it is not multilib aware; this
+  fixes build on x86_64
+
 * Thu Nov 20 2003 Panu Matilainen <pmatilai@welho.com> 0:2.4.2.4-0.fdr.2
 - add missing buildrequires: python-devel, wxGTK2-gl
 
