@@ -4,7 +4,7 @@
 
 Name:           wxPython
 Version:        2.4.2.4
-Release:        0.fdr.2.rh90
+Release:        0.fdr.2.1
 Epoch:          0
 Summary:        wxPython is a GUI toolkit for the Python programming language.
 
