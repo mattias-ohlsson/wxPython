@@ -4,8 +4,7 @@
 
 Name:           wxPython
 Version:        2.4.2.4
-Release:        0.fdr.2.1
-Epoch:          0
+Release:        1
 Summary:        wxPython is a GUI toolkit for the Python programming language.
 
 Group:          Development/Languages
@@ -15,8 +14,8 @@ Source0:        http://dl.sf.net/wxpython/wxPythonSrc-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  wxGTK2-devel >= 0:2.4.2, pkgconfig
-BuildRequires:	zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
-BuildRequires:	python-devel, wxGTK2-gl
+BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
+BuildRequires:  python-devel, wxGTK2-gl
 Requires:       %{_libdir}/python%{pyver}
 
 %description
