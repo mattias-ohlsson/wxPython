@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.6.3.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -17,7 +17,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  wxGTK-devel = 2.6.3, pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
-BuildRequires:  mesa-libGLU-devel
+BuildRequires:  libGLU-devel
 BuildRequires:  python-devel, wxGTK-gl
 
 # packages should depend on "wxPython", not "wxPythonGTK2", but in case
@@ -90,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-5
+- mesa-libGLU-devel -> libGLU-devel, for FC4 and for The Future
+
 * Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-4
 - grr. bump relnumber.
 
