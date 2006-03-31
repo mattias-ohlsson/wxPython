@@ -1,10 +1,11 @@
+%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
 Version:        2.6.3.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -72,8 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc wxPython/docs wxPython/demo wxPython/licence/ wxPython/samples
 %{_bindir}/*
-%{python_sitearch}/wx.pth
-%{python_sitearch}/wxversion.py*
+%{python_sitelib}/wx.pth
+%{python_sitelib}/wxversion.py*
 %dir %{python_sitearch}/wx-2.6-gtk2-unicode/
 %{python_sitearch}/wx-2.6-gtk2-unicode/wx
 %{python_sitearch}/wx-2.6-gtk2-unicode/wxPython
@@ -89,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-3
+- oh yeah -- wxversion.py not lib64.
+
 * Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-2
 - buildrequires mesa-libGLU-devel
 
