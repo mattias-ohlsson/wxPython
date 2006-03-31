@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.6.3.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -90,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-4
+- grr. bump relnumber.
+
 * Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-3
 - oh yeah -- wxversion.py not lib64.
 
