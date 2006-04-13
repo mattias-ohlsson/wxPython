@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.6.3.0
-Release:        5%{?dist}
+Version:        2.6.3.2
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -17,7 +17,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  wxGTK-devel = 2.6.3, pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
-BuildRequires:  libGLU-devel
+BuildRequires:  libGL-devel, libGLU-devel
 BuildRequires:  python-devel, wxGTK-gl
 
 # packages should depend on "wxPython", not "wxPythonGTK2", but in case
@@ -46,9 +46,6 @@ programs which use the wxPython toolkit.
 %prep
 %setup -q -n wxPython-src-%{version}
 
-# There's binaries included in the source tarball, resulting in bogus
-# dependencies for the package -- clean it up:
-rm wxPython/samples/embedded/embedded wxPython/samples/embedded/embedded.o
 
 %build
 # Just build the wxPython part, not all of wxWindows which we already have
@@ -64,6 +61,11 @@ rm -rf $RPM_BUILD_ROOT
 cd wxPython
 python setup.py %{buildflags} install --root=$RPM_BUILD_ROOT
 
+# this is a kludge....
+%if "%{python_sitelib}" != "%{python_sitearch}"
+mv $RPM_BUILD_ROOT%{python_sitelib}/wx.pth  $RPM_BUILD_ROOT%{python_sitearch}
+mv $RPM_BUILD_ROOT%{python_sitelib}/wxversion.py* $RPM_BUILD_ROOT%{python_sitearch}
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc wxPython/docs wxPython/demo wxPython/licence/ wxPython/samples
 %{_bindir}/*
-%{python_sitelib}/wx.pth
-%{python_sitelib}/wxversion.py*
+%{python_sitearch}/wx.pth
+%{python_sitearch}/wxversion.py*
 %dir %{python_sitearch}/wx-2.6-gtk2-unicode/
 %{python_sitearch}/wx-2.6-gtk2-unicode/wx
 %{python_sitearch}/wx-2.6-gtk2-unicode/wxPython
@@ -90,8 +92,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-5
-- mesa-libGLU-devel -> libGLU-devel, for FC4 and for The Future
+* Thu Apr 13 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-1
+- version 2.6.3.2
+- move wxversion.py _into_ lib64. Apparently that's the right thing to do. :)
+- upstream tarball no longer includes embedded.o (since I finally got around
+  to pointing that out to the developers instead of just kludging it away.)
+- buildrequires to just libGLU-devel instead of mesa-libGL-devel
 
 * Fri Mar 31 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.0-4
 - grr. bump relnumber.
