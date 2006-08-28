@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.6.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -92,6 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 28 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-2
+- bump release for FC6 rebuild
+
 * Thu Apr 13 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-1
 - version 2.6.3.2
 - move wxversion.py _into_ lib64. Apparently that's the right thing to do. :)
