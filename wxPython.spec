@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.6.3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -92,6 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Dec 11 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-3
+- bump release for rebuild against python 2.5.
+
 * Mon Aug 28 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-2
 - bump release for FC6 rebuild
 
