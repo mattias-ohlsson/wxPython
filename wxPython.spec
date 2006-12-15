@@ -4,18 +4,18 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.6.3.2
-Release:        3%{?dist}
+Version:        2.8.0.1
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
 Group:          Development/Languages
 License:        LGPL
 URL:            http://www.wxpython.org/
-Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.gz
+Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  wxGTK-devel = 2.6.3, pkgconfig
+BuildRequires:  wxGTK-devel >= 2.8.0-2.8.0.1, pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
 BuildRequires:  libGL-devel, libGLU-devel
 BuildRequires:  python-devel, wxGTK-gl
@@ -77,21 +77,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{python_sitearch}/wx.pth
 %{python_sitearch}/wxversion.py*
-%dir %{python_sitearch}/wx-2.6-gtk2-unicode/
-%{python_sitearch}/wx-2.6-gtk2-unicode/wx
-%{python_sitearch}/wx-2.6-gtk2-unicode/wxPython
+%dir %{python_sitearch}/wx-2.8-gtk2-unicode/
+%{python_sitearch}/wx-2.8-gtk2-unicode/wx
+%{python_sitearch}/wx-2.8-gtk2-unicode/wxPython
+%{python_sitelib}/wxaddons
 
 %files devel
 %defattr(-,root,root,-)
-%dir %{_includedir}/wx-2.6/wx/wxPython
-%{_includedir}/wx-2.6/wx/wxPython/*.h
-%dir %{_includedir}/wx-2.6/wx/wxPython/i_files
-%{_includedir}/wx-2.6/wx/wxPython/i_files/*.i
-%{_includedir}/wx-2.6/wx/wxPython/i_files/*.py*
-%{_includedir}/wx-2.6/wx/wxPython/i_files/*.swg
+%dir %{_includedir}/wx-2.8/wx/wxPython
+%{_includedir}/wx-2.8/wx/wxPython/*.h
+%dir %{_includedir}/wx-2.8/wx/wxPython/i_files
+%{_includedir}/wx-2.8/wx/wxPython/i_files/*.i
+%{_includedir}/wx-2.8/wx/wxPython/i_files/*.py*
+%{_includedir}/wx-2.8/wx/wxPython/i_files/*.swg
 
 
 %changelog
+* Fri Dec 15 2006 Matthew Miller <mattdm@mattdm.org> - 2.8.0.1-1
+- update to 2.8.0.1
+- make buildrequire wxGTK of version-wxpythonsubrelease
+- add wxaddons to filelist
+
 * Mon Dec 11 2006 Matthew Miller <mattdm@mattdm.org> - 2.6.3.2-3
 - bump release for rebuild against python 2.5.
 
