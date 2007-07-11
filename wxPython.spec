@@ -4,7 +4,7 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.3.0
+Version:        2.8.4.0
 Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
@@ -15,7 +15,7 @@ URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  wxGTK-devel >= 2.8.3, pkgconfig
+BuildRequires:  wxGTK-devel >= 2.8.4, pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
 BuildRequires:  libGL-devel, libGLU-devel
 BuildRequires:  python-devel, wxGTK-gl
@@ -23,6 +23,9 @@ BuildRequires:  python-devel, wxGTK-gl
 # packages should depend on "wxPython", not "wxPythonGTK2", but in case
 # one does, here's the provides for it.
 Provides:       wxPythonGTK2 = %{version}-%{release}
+
+# time for this to go away.
+Obsoletes:      compat-wxPythonGTK < 2.8.4.0
 
 %description
 wxPython is a GUI toolkit for the Python programming language. It allows
@@ -93,6 +96,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 11 2007 Matthew Miller <mattdm@mattdm.org> - 2.8.4.0-1
+- update to 2.8.4.0
+- obsolete compat-wxPythonGTK
+
 * Sun Apr 15 2007 Matthew Miller <mattdm@mattdm.org> - 2.8.3.0-1
 - update to 2.8.3.0
 
