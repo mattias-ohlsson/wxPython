@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -96,6 +96,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Aug 29 2007 Fedora Release Engineering <rel-eng at fedoraproject dot org> - 2.8.4.0-2
+- Rebuild for selinux ppc32 issue.
+
 * Wed Jul 11 2007 Matthew Miller <mattdm@mattdm.org> - 2.8.4.0-1
 - update to 2.8.4.0
 - obsolete compat-wxPythonGTK
