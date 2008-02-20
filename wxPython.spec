@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.4.0
-Release:        3%{?dist}
+Version:        2.8.7.1
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -14,8 +14,9 @@ License:        LGPL
 URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
-BuildRequires:  wxGTK-devel >= 2.8.4, pkgconfig
+# make sure to keep this updated as appropriate
+BuildRequires:  wxGTK-devel >= 2.8.7
+BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
 BuildRequires:  libGL-devel, libGLU-devel
 BuildRequires:  python-devel, wxGTK-gl
@@ -96,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 20 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-1
+- update to 2.8.7.1
+
 * Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2.8.4.0-3
 - Autorebuild for GCC 4.3
 
