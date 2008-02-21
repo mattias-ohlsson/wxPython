@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -85,6 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitearch}/wx-2.8-gtk2-unicode/wx
 %{python_sitearch}/wx-2.8-gtk2-unicode/wxPython
 %{python_sitelib}/wxaddons
+%if 0%{?fedora} >= 9
+%{python_sitelib}/*egg-info
+%{python_sitearch}/wx-2.8-gtk2-unicode/*egg-info
+%endif
 
 %files devel
 %defattr(-,root,root,-)
@@ -97,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Feb 21 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-2
+- include egg-info files for fedora 9 or greater
+
 * Wed Feb 20 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-1
 - update to 2.8.7.1
 
