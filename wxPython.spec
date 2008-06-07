@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.7.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -101,6 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jun  6 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-4
+- gratuitously bump package release number to work around build system
+  glitch. again, but it will work this time.
+
 * Wed Jun  4 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-3
 - gratuitously bump package release number to work around build system
   glitch
