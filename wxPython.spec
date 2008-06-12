@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.7.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -13,6 +13,7 @@ Group:          Development/Languages
 License:        LGPL
 URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
+Patch0:         wxPython-src-2.8.7.1-bug450073.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
 BuildRequires:  wxGTK-devel >= 2.8.7
@@ -49,6 +50,7 @@ programs which use the wxPython toolkit.
 
 %prep
 %setup -q -n wxPython-src-%{version}
+%patch0 -p1
 
 
 %build
@@ -101,6 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jun 12 2008 Hans de Goede <j.w.r.degoede@hhs.nl> - 2.8.7.1-5
+- Fix an attribute error when importing wxPython (compat) module
+  (redhat bugzilla 450073, 450074)
+
 * Sat Jun  6 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.7.1-4
 - gratuitously bump package release number to work around build system
   glitch. again, but it will work this time.

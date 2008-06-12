@@ -6,7 +6,7 @@ diff -up wxPython-src-2.8.7.1/wxPython/wxPython/_misc.py~ wxPython-src-2.8.7.1/w
  wxDateTime_IsLeapYear = wx._misc.DateTime_IsLeapYear
  wxDateTime_GetCentury = wx._misc.DateTime_GetCentury
 -wxDateTime_GetNumberOfDaysinYear = wx._misc.DateTime_GetNumberOfDaysinYear
-+wxDateTime_GetNumberOfDaysinYear = wx._misc.DateTime_GetNumberOfDaysInYear
++wxDateTime_GetNumberOfDaysInYear = wx._misc.DateTime_GetNumberOfDaysInYear
  wxDateTime_GetNumberOfDaysInMonth = wx._misc.DateTime_GetNumberOfDaysInMonth
  wxDateTime_GetMonthName = wx._misc.DateTime_GetMonthName
  wxDateTime_GetWeekDayName = wx._misc.DateTime_GetWeekDayName
