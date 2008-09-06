@@ -5,12 +5,12 @@
 
 Name:           wxPython
 Version:        2.8.8.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
 Group:          Development/Languages
-License:        LGPL
+License:        LGPLv2+ and wxWidgets 
 URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Sep  6 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 2.8.8.0-2
+- fix license tag
+
 * Thu Jul 31 2008 Matthew Miller <mattdm@mattdm.org> - 2.8.8.0-1
 - update to 2.8.8.0 (bug #457408)
 - a fix for bug #450073 is included in the upstream release, so
