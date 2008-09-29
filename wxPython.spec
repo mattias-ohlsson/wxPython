@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.8.0
-Release:        2%{?dist}
+Version:        2.8.9.0
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -15,7 +15,7 @@ URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
-BuildRequires:  wxGTK-devel >= 2.8.8
+BuildRequires:  wxGTK-devel >= 2.8.9
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
 BuildRequires:  libGL-devel, libGLU-devel
@@ -101,6 +101,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 29 2008 Dan Horak <dan[at]danny.cz> - 2.8.9.0-1
+- update to 2.8.9.0
+
 * Sat Sep  6 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 2.8.8.0-2
 - fix license tag
 
