@@ -4,7 +4,7 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.9.0
+Version:        2.8.9.1
 Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
@@ -49,6 +49,9 @@ programs which use the wxPython toolkit.
 
 %prep
 %setup -q -n wxPython-src-%{version}
+
+# fix libdir otherwise it additional wx libs cannot be found
+sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
 
 
 %build
@@ -101,6 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 30 2008 Dan Horak <dan[at]danny.cz> - 2.8.9.1-1
+- update to 2.8.9.1
+- fix libdir for additional wx libraries (#306761)
+
 * Mon Sep 29 2008 Dan Horak <dan[at]danny.cz> - 2.8.9.0-1
 - update to 2.8.9.0
 
