@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.9.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -104,6 +104,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 2.8.9.1-2
+- Rebuild for Python 2.6
+
 * Tue Sep 30 2008 Dan Horak <dan[at]danny.cz> - 2.8.9.1-1
 - update to 2.8.9.1
 - fix libdir for additional wx libraries (#306761)
