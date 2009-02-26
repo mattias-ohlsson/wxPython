@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.9.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -104,6 +104,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.8.9.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 2.8.9.1-2
 - Rebuild for Python 2.6
 
