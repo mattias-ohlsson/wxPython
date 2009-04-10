@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.9.1
-Release:        4%{?dist}
+Version:        2.8.9.2
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -46,11 +46,22 @@ This package includes C++ header files and SWIG files needed for developing
 add-on modules for wxPython. It is NOT needed for development of most
 programs which use the wxPython toolkit.
 
+%package        docs
+Group:          Documentation
+Summary:        Documentation and samples for wxPython
+Requires:       %{name} = %{version}-%{release}
+%if 0%{?fedora} > 9
+BuildArch:      noarch
+%endif
+
+%description docs
+Documentation, samples and demo application for wxPython.
+
 
 %prep
 %setup -q -n wxPython-src-%{version}
 
-# fix libdir otherwise it additional wx libs cannot be found
+# fix libdir otherwise additional wx libs cannot be found
 sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
 
 
@@ -80,14 +91,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc wxPython/docs wxPython/demo wxPython/licence/ wxPython/samples
+%doc wxPython/licence
 %{_bindir}/*
 %{python_sitearch}/wx.pth
 %{python_sitearch}/wxversion.py*
 %dir %{python_sitearch}/wx-2.8-gtk2-unicode/
 %{python_sitearch}/wx-2.8-gtk2-unicode/wx
 %{python_sitearch}/wx-2.8-gtk2-unicode/wxPython
-%{python_sitelib}/wxaddons
 %if 0%{?fedora} >= 9
 %{python_sitelib}/*egg-info
 %{python_sitearch}/wx-2.8-gtk2-unicode/*egg-info
@@ -102,8 +112,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/wx-2.8/wx/wxPython/i_files/*.py*
 %{_includedir}/wx-2.8/wx/wxPython/i_files/*.swg
 
+%files docs
+%defattr(-,root,root,-)
+%doc wxPython/docs wxPython/demo wxPython/samples
+
 
 %changelog
+* Fri Apr 10 2009 Dan Horak <dan[at]danny.cz> - 2.8.9.2-1
+- update to 2.8.9.2
+- create noarch docs subpackage
+
 * Thu Mar  5 2009 Lubomir Rintel <lkundrak@v3.sk> - 2.8.9.1-4
 - Rebuilt for newer wxgtk package
 
