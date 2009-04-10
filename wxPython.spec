@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.9.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -13,6 +13,8 @@ Group:          Development/Languages
 License:        LGPLv2+ and wxWidgets 
 URL:            http://www.wxpython.org/
 Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
+# http://trac.wxwidgets.org/ticket/10703
+Patch0:         wxPython-2.8.9.2-treelist.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
 BuildRequires:  wxGTK-devel >= 2.8.9
@@ -60,6 +62,7 @@ Documentation, samples and demo application for wxPython.
 
 %prep
 %setup -q -n wxPython-src-%{version}
+%patch0 -p1 -b .treelist
 
 # fix libdir otherwise additional wx libs cannot be found
 sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
@@ -118,7 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Apr 10 2009 Dan Horak <dan[at]danny.cz> - 2.8.9.2-1
+* Fri Apr 10 2009 Dan Horák <dan[at]danny.cz> - 2.8.9.2-2
+- add patch to fix compile failure for contrib/gizmos/_treelist.i
+
+* Fri Apr 10 2009 Dan Horák <dan[at]danny.cz> - 2.8.9.2-1
 - update to 2.8.9.2
 - create noarch docs subpackage
 
