@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.9.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -121,6 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jul 27 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.8.9.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Fri Apr 10 2009 Dan Horák <dan[at]danny.cz> - 2.8.9.2-2
 - add patch to fix compile failure for contrib/gizmos/_treelist.i
 
