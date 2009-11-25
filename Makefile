@@ -1,10 +1,10 @@
 # Makefile for source rpm: wxPython
-# $Id: Makefile,v 1.2 2004/11/24 05:07:05 gafton Exp $
+# $Id: Makefile,v 1.4 2005/12/21 13:19:54 mschwendt Exp $
 NAME := wxPython
 SPECFILE = $(firstword $(wildcard *.spec))
 
 define find-makefile-common
-for d in common ../common ../../common ; do if [ -f $$d/Makefile.common ] ; then if [ -f $$d/CVS/Root -a -w $$/Makefile.common ] ; then cd $$d ; cvs -Q update ; fi ; echo "$$d/Makefile.common" ; break ; fi ; done
+for d in common ../common ../../common ; do if [ -f $$d/Makefile.common ] ; then if [ -f $$d/CVS/Root -a -w $$d/Makefile.common ] ; then cd $$d ; cvs -Q update ; fi ; echo "$$d/Makefile.common" ; break ; fi ; done
 endef
 
 MAKEFILE_COMMON	:= $(shell $(find-makefile-common))
