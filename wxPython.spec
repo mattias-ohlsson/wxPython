@@ -1,11 +1,11 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
 Version:        2.8.9.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -121,6 +121,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jan  7 2010 Hans de Goede <hdegoede@redhat.com> - 2.8.9.2-4
+- Change python_foo macros to use %%global as the new rpm will break
+  using %%define here, see:
+  https://www.redhat.com/archives/fedora-devel-list/2010-January/msg00093.html
+
 * Mon Jul 27 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.8.9.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
