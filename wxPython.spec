@@ -4,31 +4,27 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.9.2
-Release:        4%{?dist}
+Version:        2.8.10.1
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
 Group:          Development/Languages
 License:        LGPLv2+ and wxWidgets 
 URL:            http://www.wxpython.org/
-Source0:        http://dl.sf.net/wxpython/wxPython-src-%{version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/wxpython/%{name}-src-%{version}.tar.bz2
 # http://trac.wxwidgets.org/ticket/10703
 Patch0:         wxPython-2.8.9.2-treelist.patch
+# backport to wxGTK 2.8.10 API
+Patch1:         wxPython-2.8.10-backport.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
-BuildRequires:  wxGTK-devel >= 2.8.9
-BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel, libpng-devel, libjpeg-devel, libtiff-devel
-BuildRequires:  libGL-devel, libGLU-devel
-BuildRequires:  python-devel, wxGTK-gl
+BuildRequires:  wxGTK-devel >= 2.8.10
+BuildRequires:  python-devel
 
 # packages should depend on "wxPython", not "wxPythonGTK2", but in case
 # one does, here's the provides for it.
 Provides:       wxPythonGTK2 = %{version}-%{release}
-
-# time for this to go away.
-Obsoletes:      compat-wxPythonGTK < 2.8.4.0
 
 %description
 wxPython is a GUI toolkit for the Python programming language. It allows
@@ -63,6 +59,7 @@ Documentation, samples and demo application for wxPython.
 %prep
 %setup -q -n wxPython-src-%{version}
 %patch0 -p1 -b .treelist
+%patch1 -p1
 
 # fix libdir otherwise additional wx libs cannot be found
 sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
@@ -121,6 +118,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jan 16 2010 Dan Horák <dan[at]danny.cz> - 2.8.10.1-1
+- update to 2.8.10.1
+- backport to wxGTK 2.8.10 API
+- cleaned up BRs
+
 * Thu Jan  7 2010 Hans de Goede <hdegoede@redhat.com> - 2.8.9.2-4
 - Change python_foo macros to use %%global as the new rpm will break
   using %%define here, see:
