@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.10.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -17,6 +17,8 @@ Source0:        http://downloads.sourceforge.net/wxpython/%{name}-src-%{version}
 Patch0:         wxPython-2.8.9.2-treelist.patch
 # backport to wxGTK 2.8.10 API
 Patch1:         wxPython-2.8.10-backport.patch
+# add missing module - https://bugzilla.redhat.com/show_bug.cgi?id=573961
+Patch2:         wxPython-2.8.10.1-ebmlib.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
 BuildRequires:  wxGTK-devel >= 2.8.10
@@ -60,6 +62,7 @@ Documentation, samples and demo application for wxPython.
 %setup -q -n wxPython-src-%{version}
 %patch0 -p1 -b .treelist
 %patch1 -p1
+%patch2 -p1
 
 # fix libdir otherwise additional wx libs cannot be found
 sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
@@ -118,6 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 17 2010 Dan Horák <dan[at]danny.cz> - 2.8.10.1-2
+- add missing module (#573961)
+
 * Sat Jan 16 2010 Dan Horák <dan[at]danny.cz> - 2.8.10.1-1
 - update to 2.8.10.1
 - backport to wxGTK 2.8.10 API
