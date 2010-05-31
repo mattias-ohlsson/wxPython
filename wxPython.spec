@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.10.1
-Release:        3%{?dist}
+Version:        2.8.11.0
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -15,11 +15,12 @@ URL:            http://www.wxpython.org/
 Source0:        http://downloads.sourceforge.net/wxpython/%{name}-src-%{version}.tar.bz2
 # http://trac.wxwidgets.org/ticket/10703
 Patch0:         wxPython-2.8.9.2-treelist.patch
-# add missing module - https://bugzilla.redhat.com/show_bug.cgi?id=573961
-Patch2:         wxPython-2.8.10.1-ebmlib.patch
+# fix aui imports
+# http://trac.wxwidgets.org/ticket/12107
+Patch1:         wxPython-2.8.11.0-aui.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 # make sure to keep this updated as appropriate
-BuildRequires:  wxGTK-devel >= 2.8.10
+BuildRequires:  wxGTK-devel >= 2.8.11
 BuildRequires:  python-devel
 
 # packages should depend on "wxPython", not "wxPythonGTK2", but in case
@@ -59,7 +60,7 @@ Documentation, samples and demo application for wxPython.
 %prep
 %setup -q -n wxPython-src-%{version}
 %patch0 -p1 -b .treelist
-%patch2 -p1 -b .ebmlib
+%patch1 -p1 -b .aui
 
 # fix libdir otherwise additional wx libs cannot be found
 sed -i -e 's|/usr/lib|%{_libdir}|' wxPython/config.py
@@ -118,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon May 31 2010 Dan Horák <dan[at]danny.cz> - 2.8.11.0-1
+- update to 2.8.11.0 (#593837, #595936, #597639)
+
 * Sun May  2 2010 Dan Horák <dan[at]danny.cz> - 2.8.10.1-3
 - rebuilt with wxGTK 2.8.11
 
