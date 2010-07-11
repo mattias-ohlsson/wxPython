@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -99,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{python_sitearch}/wx-2.8-gtk2-unicode/
 %{python_sitearch}/wx-2.8-gtk2-unicode/wx
 %{python_sitearch}/wx-2.8-gtk2-unicode/wxPython
-%if 0%{?fedora} >= 9
+%if 0%{?fedora} >= 9 || 0%{?rhel} >= 6
 %{python_sitelib}/*egg-info
 %{python_sitearch}/wx-2.8-gtk2-unicode/*egg-info
 %endif
@@ -119,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jul 11 2010 Lubomir Rintel <lkundrak@v3.sk> - 2.8.11.0-2
+- Include egg-info when build on recent RHEL
+
 * Mon May 31 2010 Dan Horák <dan[at]danny.cz> - 2.8.11.0-1
 - update to 2.8.11.0 (#593837, #595936, #597639)
 
