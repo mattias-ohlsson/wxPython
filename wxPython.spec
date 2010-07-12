@@ -5,7 +5,7 @@
 
 Name:           wxPython
 Version:        2.8.11.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -119,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jul 12 2010 Dan Horák <dan@danny.cz> - 2.8.11.0-3
+- rebuilt against wxGTK-2.8.11-2
+
 * Sun Jul 11 2010 Lubomir Rintel <lkundrak@v3.sk> - 2.8.11.0-2
 - Include egg-info when build on recent RHEL
 
