@@ -4,8 +4,8 @@
 %define buildflags WXPORT=gtk2 UNICODE=1
 
 Name:           wxPython
-Version:        2.8.12.0
-Release:        2%{?dist}
+Version:        2.8.12.1
+Release:        1%{?dist}
 
 Summary:        GUI toolkit for the Python programming language
 
@@ -112,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Apr 14 2012 Mattias Ohlsson <mattias.ohlsson@inprose.com> - 2.8.12.1-1
+- update to 2.8.12.1 (iprediaos #20)
+
 * Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.8.12.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
